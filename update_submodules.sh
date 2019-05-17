@@ -29,7 +29,8 @@ if [[ ${updateResult} == *Error* ]]; then
   else
   shouldPush=true
 fi
-
+echo "=========="
+echo "shouldPush-$shouldPush"
 if [[ ("$1" = "-push") && (${shouldPush}=true) ]]
 then
 codePushCommand="git add --all && git commit -m 'bumping submodules' && git push origin $currentBranch"
