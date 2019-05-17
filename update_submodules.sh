@@ -3,7 +3,7 @@
 #Set whatever number of arguments you expect for the Java jar you have
 ARGS_EXPECTED=1
 
-shouldPush=true
+shouldPush="y"
 
 if [[ $# == ${ARGS_EXPECTED} ]]
 then
@@ -24,20 +24,15 @@ done
 submoduleUpdateCommand="git submodule update --remote --merge --recursive|| echo \"Error\""
 updateResult=$(eval ${submoduleUpdateCommand})
 if [[ ${updateResult} == *Error* ]]; then
-  shouldPush=false
+  shouldPush="n"
   echo ${updateResult}
-  else
-  shouldPush=true
 fi
-echo "=========="
-echo "shouldPush-$shouldPush"
-if [[ ("$1" = "-push") && (${shouldPush}=true) ]]
-then
+if [[ "$1" = "-push" ]] && [[ "$shouldPush" = "y" ]]; then
 codePushCommand="git add --all && git commit -m 'bumping submodules' && git push origin $currentBranch"
 eval ${codePushCommand}
 echo "SUCCESS"
 else
-echo "Error"
+echo "ERROR"
 fi
   exit 0
 else
