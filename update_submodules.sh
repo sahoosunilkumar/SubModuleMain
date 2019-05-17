@@ -23,14 +23,14 @@ submoduleUpdateCommand="git submodule update --remote --merge --recursive"
 eval ${submoduleUpdateCommand}
 echo ${submoduleUpdateCommand}
 
-if [[ "$1" = "-m" ]]
+if [[ "$1" = "-push" ]]
 then
 codePushCommand="git add --all && git commit -m 'bumping submodules' && git push origin $currentBranch"
 eval ${codePushCommand}
 fi
   exit 0
 else
-  echo "[$HOSTNAME]: Usage: `basename $0` filename arg1 arg2"
+  echo "[$HOSTNAME]: Usage: `basename $0` -push to push the code"
   exit 1
 fi
 
