@@ -20,8 +20,7 @@ eval ${submoduleConfigUpdate}
 done
 
 submoduleUpdateCommand="git submodule update --remote --merge --recursive"
-eval ${submoduleUpdateCommand}
-echo ${submoduleUpdateCommand}
+eval echo ${submoduleUpdateCommand}
 
 if [[ "$1" = "-push" ]]
 then
