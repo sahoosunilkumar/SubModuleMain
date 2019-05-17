@@ -1,6 +1,8 @@
 [submodule "utility"]
 	path = utility
 	url = https://github.com/sahoosunilkumar/Utility.git
+	branch = develop
 [submodule "DateUtil"]
 	path = DateUtil
 	url = https://github.com/sahoosunilkumar/DateUtil.git
+	branch = develop
