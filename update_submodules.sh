@@ -13,19 +13,15 @@ else
 branchName="$currentBranch"
 fi
 
-echo "current branch : $branchName"
-
 for OUTPUT in $(grep path .gitmodules | sed 's/.*= //')
 do
-echo "$OUTPUT"
 submoduleConfigUpdate="git config -f .gitmodules submodule.$OUTPUT.branch $branchName"
 eval ${submoduleConfigUpdate}
-echo "submodule config : $submoduleConfigUpdate"
 done
 
 submoduleUpdateCommand="git submodule update --remote --merge --recursive"
 eval ${submoduleUpdateCommand}
-echo $1
+echo ${submoduleUpdateCommand}
 
 if [[ "$1" = "-m" ]]
 then
