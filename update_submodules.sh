@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Set whatever number of arguments you expect for the Java jar you have
-ARGS_EXPECTED=3
+ARGS_EXPECTED=1
 
 if [[ $# == ${ARGS_EXPECTED} ]]
 then
@@ -25,6 +25,13 @@ done
 
 submoduleUpdateCommand="git submodule update --remote --merge --recursive"
 eval ${submoduleUpdateCommand}
+echo $1
+
+if [[ "$1" = "-m" ]]
+then
+codePushCommand="git add --all && git commit -m 'bumping submodules' && git push origin $currentBranch"
+eval ${codePushCommand}
+fi
   exit 0
 else
   echo "[$HOSTNAME]: Usage: `basename $0` filename arg1 arg2"
