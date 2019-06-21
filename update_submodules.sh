@@ -30,9 +30,9 @@ fi
 if [[ "$1" = "-push" ]] && [[ "$shouldPush" = "y" ]]; then
 codePushCommand="git add --all && git commit -m 'bumping submodules' && git push origin $currentBranch"
 eval ${codePushCommand}
-echo "SUCCESS"
+echo "PUSH SUCCESS"
 else
-echo "ERROR"
+echo "PUSH ERROR"
 fi
   exit 0
 else
